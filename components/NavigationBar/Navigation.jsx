@@ -22,7 +22,6 @@ function Navigation() {
                 applicationContext.authDispatch({ type: "SIGNOUT" })
                 router.push("/auth")
                 localStorage.removeItem("session")
-                console.log(res.data)
             })
             .catch(err => {
                 console.log(err)

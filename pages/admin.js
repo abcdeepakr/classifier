@@ -24,9 +24,7 @@ function Admin() {
     }
 
     const createLabelHandler = () =>{
-        console.log("creating")
         let allLabels = localStorage.getItem("labels")
-        console.log(allLabels)
         if(allLabels == null){
             setLabels([label])
             localStorage.setItem("labels",JSON.stringify([label]))
@@ -35,7 +33,6 @@ function Admin() {
             if(updated.indexOf(label)==-1){
                 updated.push(label)
             }
-            console.log(updated)
             setLabels(updated)
             localStorage.setItem("labels",JSON.stringify(updated))
         }

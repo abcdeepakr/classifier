@@ -10,13 +10,12 @@ function RenderImages() {
     const applicationContext = useContext(AppContext)
     const router = useRouter()
     const [filteredIndexes, setFilteredIndexs] = useState([])
-
+    const [imageLoading, setImageLoading] = useState({});
+    
     useEffect(() => {
-        console.log("effecting")
         //todo render this from localstorage
         let updatedFilteredIndexes = [];
         let selectedFilterLabels = [...applicationContext.filters.selectedFilters]
-        // console.log(selectedFilterLabels)
         let animalData = localStorage.getItem("animalData") // animal data object
         if(animalData != null){
             animalData = JSON.parse(animalData)
@@ -26,6 +25,10 @@ function RenderImages() {
                         updatedFilteredIndexes.push(imageObject.id)
                     }
                 })
+
+                let imageLoadingState = {...imageLoading}
+                imageLoading[imageObject.id] = false
+                setImageLoading(imageLoadingState)
             })
 
             if(selectedFilterLabels.length == 0){
@@ -51,8 +54,26 @@ function RenderImages() {
             maxHeight: "100%",
             display: "block",
             objectFit: "cover"
+        },
+        shadowComponent:{
+            position:" absolute",
+            top:" 0",
+            left:" 0",
+            width:" 100%",
+            height:" 100%",
+            backgroundColor:" rgba(0, 0, 0, 0.3)",
+            display:" flex",
+            justifyContent:" center",
+            alignItems:" center",
+            fontSize:" 24px",
+            color:" #fff"
         }
 
+    }
+    const updateLoadingState = (id) =>{
+        const loading = {...imageLoading}
+        loading[id] = true
+        setImageLoading(loading)
     }
     return (
         <>
@@ -60,7 +81,9 @@ function RenderImages() {
                 if (filteredIndexes.indexOf(imageObject.id) != -1) {
                     return (
                         <div style={styles.imageContainer} key={imageObject.id}>
-                            <Image src={imageObject.img_url} alt="something"
+                            <Image 
+                                    onLoad={() => updateLoadingState(imageObject.id)}
+                            src={imageObject.img_url} alt="something"
                                 width={200}
                                 height={300}
                                 style={styles.image}
