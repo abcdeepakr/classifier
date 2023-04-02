@@ -66,7 +66,6 @@ function RenderImages() {
             justifyContent:" center",
             alignItems:" center",
             fontSize:" 24px",
-            color:" #fff"
         }
 
     }

@@ -9,29 +9,29 @@ import Checkbox from '@mui/material/Checkbox';
 import { Button } from '@mui/material';
 
 function RenderFilters() {
-    
+
     const applicationContext = useContext(AppContext)
-    
+
     const [loading, setLoading] = useState(true)
     useEffect(() => {
         let uniqueFilters = []
         const labels = localStorage.getItem("labels")
-        if(labels !=null){
+        if (labels != null) {
             applicationContext.filterDispatch({ type: "UNIQUE_FILTERS", payload: JSON.parse(labels) })
         }
         setLoading(false)
     }, [])
-    const updateSelectedFilters = (event) =>{
+    const updateSelectedFilters = (event) => {
         let checked = event.target.checked
         let selectedFilter = event.target.id
         let currSelectedFilters = [...applicationContext.filters.selectedFilters]
         let unique = [...applicationContext.filters.uniqueFilters]
-        if(checked && currSelectedFilters.indexOf(selectedFilter)==-1){
+        if (checked && currSelectedFilters.indexOf(selectedFilter) == -1) {
             currSelectedFilters.push(selectedFilter)
-        } else{
-            currSelectedFilters.splice(currSelectedFilters.indexOf(selectedFilter),1)
+        } else {
+            currSelectedFilters.splice(currSelectedFilters.indexOf(selectedFilter), 1)
         }
-        applicationContext.filterDispatch({type:"UPDATE_SELECTED_FILTERS",payload:{selected:currSelectedFilters, unique:unique}})
+        applicationContext.filterDispatch({ type: "UPDATE_SELECTED_FILTERS", payload: { selected: currSelectedFilters, unique: unique } })
     }
 
     return (
@@ -54,9 +54,14 @@ function RenderFilters() {
                 />
             </Box> : applicationContext.filters.uniqueFilters.map(label => {
                 return (
-                    
+
                     <FormGroup key={label}>
-                        <FormControlLabel  control={<Checkbox onClick={(e)=>updateSelectedFilters(e)} id={label} color="success" />}  label={label} />
+                        <FormControlLabel control={<Checkbox sx={{
+                            color: "white",
+                            '&.Mui-checked': {
+                                color: "white",
+                            },
+                        }} onClick={(e) => updateSelectedFilters(e)} id={label} color="success" />} label={label} />
                     </FormGroup>
 
                 )

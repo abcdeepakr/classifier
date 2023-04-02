@@ -5,9 +5,7 @@ import { useEffect, useState, useContext } from 'react'
 import { AppContext } from './_app'
 import styles from '../styles/auth.module.css'
 
-
-
-import { CardContent, Card, TextField, Typography, Button } from '@mui/material'
+import { CardContent, Card, TextField, Typography, Button, CircularProgress } from '@mui/material'
 export default function Auth() {
     const router = useRouter()
     const [email, setEmail] = useState("")
@@ -84,7 +82,7 @@ export default function Auth() {
                 <div className={styles.buttonContainer}>
                     
                     <Button style={{ margin: '10px' }} color="success" variant="contained" onClick={() => signInWithEmail()}>
-                    {loading ? <div className={styles.loader}></div> : "sign in"}
+                    {loading ? <CircularProgress size="1.8rem" color="inherit" /> : "Sign In"}
                         </Button>
                     <Button style={{ margin: '10px' }} color="success" variant="contained" onClick={() => signUp()}>Sign Up</Button>
                 </div>

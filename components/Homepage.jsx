@@ -3,6 +3,9 @@ import React, { useState, useContext, useEffect } from 'react'
 import { AppContext } from '../pages/_app'
 import { useRouter } from 'next/router'
 import RenderDashboard from './ImageView/RenderFilterView'
+import Skeleton from '@mui/material/Skeleton';
+import Stack from '@mui/material/Stack';
+import { height } from '@mui/system'
 
 function Homepage() {
     const applicationContext = useContext(AppContext)
@@ -28,12 +31,29 @@ function Homepage() {
         }
         verifyToken()
     }, [])
+
+    const styles = {
+        skeleton: {
+            minWidth: "600px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100vh",
+            width: "100%"
+        }
+    }
     return (
         <>
 
-        {authLoading ? null : <RenderDashboard /> }
+            {authLoading ? <div style={styles.skeleton}>
+                <Stack spacing={1}>
+                    {/* For variant="text", adjust the height via font-size */}
+                    {/* For other variants, adjust the size with `width` and `height` */}
+                    <Skeleton variant="rounded" width={810} height={500} />
+                </Stack>
+            </div> : <RenderDashboard />}
         </>
-        
+
     )
 }
 

@@ -12,7 +12,6 @@ import {
 const styles = {
     imageCard: {
         minHeight: "300px",
-        border: "2px solid white",
         margin: "10px",
         width: "100%",
         display: "flex"
