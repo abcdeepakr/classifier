@@ -26,7 +26,7 @@ If you do not want to set these up, you can test it live on [here](https://class
 
 Clone the repository locally using the command `git clone https://github.com/deepakr-28/classifier.git`
 
-Create a `.env. file and configure the following variables
+Create a `.env` file and configure the following variables
 ```
 NEXT_PUBLIC_SUPABASE_URL=
 NEXT_PUBLIC_SUPABASE_ANON_KEY=
