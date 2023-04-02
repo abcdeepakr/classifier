@@ -7,7 +7,7 @@ import imagesJson from '../public/content/schema.json'
 function Dashboard() {
     const [loading, setLoading] = useState(true)
     const applicationContext = useContext(AppContext)
-    const [animalData, setAnimalData] = useState([])
+    
     const router = useRouter()
     useEffect(() => {
         let animalData = [...JSON.parse(localStorage.getItem('animalData'))]
