@@ -19,6 +19,7 @@ function RenderImages() {
         let animalData = localStorage.getItem("animalData") // animal data object
         if(animalData != null){
             animalData = JSON.parse(animalData)
+            console.log(animalData)
             animalData.map(imageObject => {
                 imageObject.img_labels.map(label => {
                     if (selectedFilterLabels.indexOf(label) != -1 && updatedFilteredIndexes.indexOf(imageObject.id) == -1) {

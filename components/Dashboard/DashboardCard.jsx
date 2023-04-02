@@ -78,14 +78,15 @@ function DashboardCard({ imageData }) {
                     }
                 }
             })
-            
-
+            console.log(latestUpdatedSchema)
         }
         // setAge(event.target.value);
     };
     
     useEffect(()=>{
         const animalData = localStorage.getItem("animalData")
+        // console.log(JSON.parse(animalData))
+        console.log(imageData)
         const labels = localStorage.getItem("labels")
         if(labels !=null){
             setLabels(JSON.parse(labels))

@@ -7,10 +7,11 @@ import imagesJson from '../public/content/schema.json'
 function Dashboard() {
     const [loading, setLoading] = useState(true)
     const applicationContext = useContext(AppContext)
+    const [animalData, setAnimalData] = useState([])
     const router = useRouter()
     useEffect(() => {
-
-        localStorage.setItem("animalData", JSON.stringify(imagesJson.images))
+        let animalData = [...JSON.parse(localStorage.getItem('animalData'))]
+        localStorage.setItem("animalData", JSON.stringify(animalData))
         const verifyToken = async () => {
             if (localStorage.getItem("session") == null) {
                 router.push('/auth')

@@ -24,7 +24,6 @@ function RenderDashboard() {
             justifyContent: "center",
             alignItems: "center"
         }
-
     }
     return (
         <div style={styles.dashboardContainer}>
