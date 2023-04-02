@@ -226,4 +226,5 @@ The states are preserved when we move between different routes.
 Since we are using a localstorage to store the labels, this project is for test purpose, since the labels created by the admin will be in the same machine.
 
 ## Demo
-<video src='https://www.veed.io/embed/9958d14f-f9f6-4008-9ba7-d240fcd04822' width=180/>
+
+View the Demo video [Here](https://www.veed.io/view/9958d14f-f9f6-4008-9ba7-d240fcd04822?panel=share)
