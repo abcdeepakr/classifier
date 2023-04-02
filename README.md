@@ -1,4 +1,4 @@
-# Image Labeller
+# <u>Image Labeller</u>
 
 This application allows you to sign up with you personal email or an admin email.
 After sign in normal users will be able to label images with different labels
@@ -10,7 +10,13 @@ This is a sample project, the labels created by the admin will be stored in the 
 
 This caveat can be tackled by migrating to a Supabase postgreSQL DB.
 
-# Getting started
+# tl;dr 
+<hr>
+View the Demo video [Here](https://www.veed.io/view/9958d14f-f9f6-4008-9ba7-d240fcd04822?panel=share)
+Test the live website [here](https://classifier-ebon.vercel.app/)
+
+# <u>Getting started</u>
+
 Pre-requisite
 - Supabase account for DB and Auth
 - Supabase DB Connection URL
@@ -29,7 +35,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=
 
 Run the command `npm run dev` to run the project locally.
 
-# Technical Specs
+# <u>Technical Specs</u>
 
 ## Stack
 - Frontend - NextJS
@@ -182,7 +188,7 @@ Multiple actions are dispatched from this route to the global context. Everytime
 This is a single image object that is stored in the localStorage.
 This schema is used to get the skeleton and images. They are stored in the localstorage and then the values are updated in the localStorage, there are no write oprations on this schema. All operations are performed on the localstorage instance of the same.
 
-# User Specs
+# <u>User Specs</u>
 
 ## Authentication
 The normal users can create their account, verify their emails and start labelling images
@@ -228,3 +234,5 @@ Since we are using a localstorage to store the labels, this project is for test 
 ## Demo
 
 View the Demo video [Here](https://www.veed.io/view/9958d14f-f9f6-4008-9ba7-d240fcd04822?panel=share)
+
+Test the live website [here](https://classifier-ebon.vercel.app/)
