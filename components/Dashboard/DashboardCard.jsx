@@ -129,7 +129,7 @@ function DashboardCard({ imageData }) {
                     {schema.length > 0 ? schema.map(animalItem => {
                         if(animalItem.id == imageData.id){
                             return animalItem.img_labels.map(label =>{
-                                return <Button onClick={(e)=>handleClick(e,"remove")} style={{ marginRight: "5px" }} key={label} id={imageData.id+":"+label} color="warning" variant="contained">{label}</Button>
+                                return <Button onClick={(e)=>handleClick(e,"remove")} style={{ margin: "5px 5px px 0px" }} key={label} id={imageData.id+":"+label} color="warning" variant="contained">{label}</Button>
                             })   
                         }
                         
