@@ -78,7 +78,8 @@ export default function Auth() {
     return (
         <>
         <p className={styles.heading}>Image Classifier</p>
-            <Card className={styles.authCard} style={{ background: '#fff' }}>
+        <div className={styles.cardContainer}>
+        <Card className={styles.authCard} style={{ background: '#fff' }}>
                 <CardContent><br></br>
                     <Typography color="#000000" variant="h5" align="center" component="div">
                         Login/Signup
@@ -97,6 +98,8 @@ export default function Auth() {
 
                 </CardContent>
             </Card>
+        </div>
+            
         <p className={styles.creds}>Test Credentials <br></br>Username: <b>admin@classifier.com</b> <br></br>Password: <b>adminpassword</b></p>  
         </>
     )
