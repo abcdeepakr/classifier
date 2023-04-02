@@ -99,6 +99,7 @@ function DashboardCard({ imageData }) {
         <div style={styles.imageCard}>
             <div style={styles.imageContainer}>
                 <Image src={imageData.img_url} alt="something"
+                    priority={true}
                     width={400}
                     height={300}
                     style={styles.image}

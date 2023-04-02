@@ -19,19 +19,16 @@ export default function Auth() {
         const verifyToken = async () => {
             if (localStorage.getItem("session") == null) {
                 router.push('/auth')
-                console.log("Session not found")
                 return false
             }
             let tokenBody = JSON.parse(localStorage.getItem("session"))
             let response = await axios.post("/api/auth/verify", { token: tokenBody })
                 .then(async res => {
-                    console.log("authenticated")
                     router.push("/")
                     applicationContext.authDispatch({ type: 'AUTHENTICATED' })
                     return res.data
                 })
                 .catch(err => {
-                    console.log("session expired")
                     router.push('/auth')
                 })
             return response
@@ -46,11 +43,9 @@ export default function Auth() {
                 localStorage.setItem("session", JSON.stringify(res.data.auth.session))
                 applicationContext.authDispatch({ type: "AUTHENTICATED" })
                 router.push("/")
-                console.log(res.data)
                 setLoading(false)
             })
             .catch(err => {
-                console.log(err)
                 setLoading(false)
             })
 
@@ -60,13 +55,11 @@ export default function Auth() {
         setLoading(true)
         axios.post('/api/auth/signup', { email: email, password: password })
             .then(res => {
-                console.log(res.data)
                 setLoading(false)
                 router.push("/confirm")
 
             })
             .catch(err => {
-                console.log(err)
                 setLoading(false)
             })
     }
@@ -89,7 +82,10 @@ export default function Auth() {
                 <TextField style={{ margin: '10px' }} label="Email" variant="outlined" placeholder='email' type='email' onChange={e => updateCreds(e, 'email')} /><br></br>
                 <TextField style={{ margin: '10px' }} label="Password" variant="outlined" placeholder='password' type='password' onChange={e => updateCreds(e, 'password')} /><br></br>
                 <div className={styles.buttonContainer}>
-                    <Button style={{ margin: '10px' }} color="success" variant="contained" onClick={() => signInWithEmail()}>Sign In</Button>
+                    
+                    <Button style={{ margin: '10px' }} color="success" variant="contained" onClick={() => signInWithEmail()}>
+                    {loading ? <div className={styles.loader}></div> : "sign in"}
+                        </Button>
                     <Button style={{ margin: '10px' }} color="success" variant="contained" onClick={() => signUp()}>Sign Up</Button>
                 </div>
 

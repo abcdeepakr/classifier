@@ -14,7 +14,6 @@ function Dashboard() {
         const verifyToken = async () => {
             if (localStorage.getItem("session") == null) {
                 router.push('/auth')
-                console.log("Session not found")
                 return false
             }
             let tokenBody = JSON.parse(localStorage.getItem("session"))
@@ -25,7 +24,6 @@ function Dashboard() {
                     return res.data
                 })
                 .catch(err => {
-                    console.log(err)
                     router.push('/auth')
                 })
             return response

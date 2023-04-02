@@ -53,7 +53,6 @@ function Admin() {
         const verifyToken = async () => {
             if (localStorage.getItem("session") == null) {
                 router.push('/auth')
-                console.log("Session not found")
                 return false
             }
             let tokenBody = JSON.parse(localStorage.getItem("session"))

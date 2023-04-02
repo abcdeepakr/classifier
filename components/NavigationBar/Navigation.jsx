@@ -24,6 +24,7 @@ function Navigation() {
                 localStorage.removeItem("session")
             })
             .catch(err => {
+                
                 console.log(err)
             })
     }

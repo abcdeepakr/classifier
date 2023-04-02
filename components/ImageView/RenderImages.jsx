@@ -53,7 +53,7 @@ function RenderImages() {
             maxWidth: "100%",
             maxHeight: "100%",
             display: "block",
-            objectFit: "cover"
+            objectFit: "cover",
         },
         shadowComponent:{
             position:" absolute",
@@ -82,7 +82,7 @@ function RenderImages() {
                     return (
                         <div style={styles.imageContainer} key={imageObject.id}>
                             <Image 
-                                    onLoad={() => updateLoadingState(imageObject.id)}
+                                    priority={true}
                             src={imageObject.img_url} alt="something"
                                 width={200}
                                 height={300}
