@@ -1,3 +1,8 @@
+.heading{
+  font-size: 28px;
+  text-align: center;
+  margin-top: 100px;
+}
 .buttonContainer{
  margin-top: 20px;
  display: flex;
@@ -79,3 +84,10 @@
     }
   }
   
+
+  .error{
+    /* border: 1px solid red; */
+    color:red;
+    font-weight: 600;
+    text-align: center;
+  }

@@ -12,6 +12,7 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { Button } from '@mui/material';
 
+import styles from '../styles/global.module.css'
 import axios from 'axios'
 function Admin() {
     const [isLoading, setLoading] = useState(true)
@@ -44,6 +45,19 @@ function Admin() {
         allLabels.splice(allLabels.indexOf(event.target.id), 1)
         setLabels(allLabels)
         localStorage.setItem("labels",JSON.stringify(allLabels))
+
+        let animalData = localStorage.getItem("animalData")
+        if(animalData !=null){
+            animalData = JSON.parse(animalData)
+            animalData.map(item =>{
+                item.img_labels.map(label =>{
+                    if(label == event.target.id){
+                        item.img_labels.splice(item.img_labels.indexOf(label),1)
+                    }
+                })
+            })
+            localStorage.setItem("animalData",JSON.stringify(animalData))
+        }
     }
 
     useEffect(() => {
@@ -61,8 +75,10 @@ function Admin() {
                     applicationContext.authDispatch({ type: 'AUTHENTICATED' })
                     if (!res.data.isAdmin) {
                         router.push('/')
+                    } else{
+                        setLoading(false)
                     }
-                    setLoading(false)
+                    
                     return res.data
                 })
                 .catch(err => {
@@ -74,31 +90,31 @@ function Admin() {
         verifyToken()
     }, [])
 
-    const styles = {
-        container:{
-            display:"flex",
-            justifyContent:"center",
-            alignItems:"center",
-            flexWrap:"wrap",
-            flexDirection:"column"
-        },
-        card: {
-            margin:"20px"
-            // position:"absolute",
-            // display:"flex",
-            // top:"20%",
-            // left:"50%",
-            // transform:"translate(-50%, -50%)"
-        },
-        labelsCard:{
-            margin:"20px"
-            // position:"absolute",
-            // display:"flex",
-            // top:"50%",
-            // left:"50%",
-            // transform:"translate(-50%, -50%)"
-        }
-    }
+    // const styles = {
+    //     container:{
+    //         display:"flex",
+    //         justifyContent:"center",
+    //         alignItems:"center",
+    //         flexWrap:"wrap",
+    //         flexDirection:"column"
+    //     },
+    //     card: {
+    //         margin:"20px"
+    //         // position:"absolute",
+    //         // display:"flex",
+    //         // top:"20%",
+    //         // left:"50%",
+    //         // transform:"translate(-50%, -50%)"
+    //     },
+    //     labelsCard:{
+    //         margin:"20px"
+    //         // position:"absolute",
+    //         // display:"flex",
+    //         // top:"50%",
+    //         // left:"50%",
+    //         // transform:"translate(-50%, -50%)"
+    //     }
+    // }
     if (isLoading) {
         return (
             <Box sx={{ width: 400 }
@@ -113,9 +129,9 @@ function Admin() {
       
     return (
         <>
-        <div style={styles.container}>
+        <div className={styles.container}>
         
-        <Card style={styles.card} sx={{ width: "auto", minWidth:500 }}>
+        <Card className={styles.card}>
             <CardContent>
                 <Typography variant="h5" component="div">
                     Create a new Label
@@ -137,7 +153,7 @@ function Admin() {
             </CardContent><br></br>
             
         </Card>    
-        <Card style={styles.labelsCard} sx={{ width: "auto", minWidth:500 }}>
+        <Card className={styles.labelsCard} sx={{ width: "auto", minWidth:500 }}>
             <CardContent>
                 <Typography variant="h5" component="div">
                     Click on a label to delete

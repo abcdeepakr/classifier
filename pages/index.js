@@ -8,8 +8,6 @@ const Home = () => {
   const applicationContext = useContext(AppContext)
   const [loading, setLoading] = useState(true)
 
-
-  console.log(applicationContext.auth, loading)
   return (
     <>
         <Homepage />

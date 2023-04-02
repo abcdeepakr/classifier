@@ -34,7 +34,7 @@ function RenderFilters() {
 
     return (
         <div>
-            <h4>{applicationContext.filters.uniqueFilters.length == 0 ? "No filters created" : "Filters"}</h4>
+            <h4>{applicationContext.filters.uniqueFilters.length == 0 ? <p>No Filters created by Admin</p> : "Filters"}</h4>
             {loading ? <Box
                 sx={{
                     bgcolor: '#121212',

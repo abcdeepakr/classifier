@@ -11,6 +11,7 @@ export default function Auth() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [loading, setLoading] = useState(false)
+    const [isSignInError, setSignInError] = useState({ state: false, message: "" })
     const applicationContext = useContext(AppContext)
 
     useEffect(() => {
@@ -36,6 +37,8 @@ export default function Auth() {
 
     async function signInWithEmail() {
         setLoading(true)
+        let errorObj = { status: false, message: "" }
+        setSignInError(errorObj)
         axios.post('/api/auth/signin', { email: email, password: password })
             .then(res => {
                 localStorage.setItem("session", JSON.stringify(res.data.auth.session))
@@ -44,6 +47,8 @@ export default function Auth() {
                 setLoading(false)
             })
             .catch(err => {
+                let errorObj = { status: true, message: err.response.data.error.message }
+                setSignInError(errorObj)
                 setLoading(false)
             })
 
@@ -70,25 +75,30 @@ export default function Auth() {
         }
     }
 
-
     return (
-        <Card className={styles.authCard} style={{ background: '#fff' }}>
-            <CardContent><br></br>
-                <Typography color="#000000" variant="h5" align="center" component="div">
-                    Login/Signup
-                </Typography><br></br>
-                <TextField style={{ margin: '10px' }} label="Email" variant="outlined" placeholder='email' type='email' onChange={e => updateCreds(e, 'email')} /><br></br>
-                <TextField style={{ margin: '10px' }} label="Password" variant="outlined" placeholder='password' type='password' onChange={e => updateCreds(e, 'password')} /><br></br>
-                <div className={styles.buttonContainer}>
-                    
-                    <Button style={{ margin: '10px' }} color="success" variant="contained" onClick={() => signInWithEmail()}>
-                    {loading ? <CircularProgress size="1.8rem" color="inherit" /> : "Sign In"}
-                        </Button>
-                    <Button style={{ margin: '10px' }} color="success" variant="contained" onClick={() => signUp()}>Sign Up</Button>
-                </div>
+        <>
+        <p className={styles.heading}>Image Classifier</p>
+            <Card className={styles.authCard} style={{ background: '#fff' }}>
+                <CardContent><br></br>
+                    <Typography color="#000000" variant="h5" align="center" component="div">
+                        Login/Signup
+                    </Typography><br></br>
 
-            </CardContent>
-        </Card>
+                    {isSignInError.status ? <p className={styles.error}>{isSignInError.message}</p> : null}
+                    <TextField style={{ margin: '10px' }} label="Email" variant="outlined" placeholder='email' type='email' onChange={e => updateCreds(e, 'email')} /><br></br>
+                    <TextField style={{ margin: '10px' }} label="Password" variant="outlined" placeholder='password' type='password' onChange={e => updateCreds(e, 'password')} /><br></br>
+                    <div className={styles.buttonContainer}>
+
+                        <Button style={{ margin: '10px' }} color="success" variant="contained" onClick={() => signInWithEmail()}>
+                            {loading ? <CircularProgress size="1.8rem" color="inherit" /> : "Sign In"}
+                        </Button>
+                        <Button style={{ margin: '10px' }} color="success" variant="contained" onClick={() => signUp()}>Sign Up</Button>
+                    </div>
+
+                </CardContent>
+            </Card>
+
+        </>
     )
 }
 

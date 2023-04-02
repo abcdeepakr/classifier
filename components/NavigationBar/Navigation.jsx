@@ -4,7 +4,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
-
+import styles from '../../styles/global.module.css'
 
 import React, { useContext } from 'react'
 import axios from 'axios'
@@ -29,26 +29,27 @@ function Navigation() {
             })
     }
     return (
-        <div>
+        <div className={styles.navbar}>
 
             <AppBar sx={{'&.MuiAppBar-colorPrimary':{
                 backgroundColor:"#132f4c"
             }}} position="static">
                 <Toolbar>
                         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                    <Link style={{color:"unset", textDecoration: "unset", margin: "5px" }} href="/" >
-                            Filter Dashboard
+                    <Link style={{fontSize:"16px", color:"unset", textDecoration: "unset", margin: "5px" }} href="/" >
+                            Home
                     </Link>
                         </Typography>
                     <Link style={{ textDecoration: "unset", margin: "5px" }} href="/dashboard" >
                         <Button sx={{'&.MuiButton-root':{
+                            
                             backgroundColor:"#66b2ff", color: "black", fontWeight:"500"
                         }}}   variant="contained" color="info">Dashboard</Button>
                     </Link>
                     <Link style={{ textDecoration: "unset", margin: "5px" }} href="/admin" >
                         <Button sx={{'&.MuiButton-root':{
                             backgroundColor:"#66b2ff", color: "black", fontWeight:"500"
-                        }}} variant="contained" color="success">Admin Dashboard</Button>
+                        }}} variant="contained" color="success">Admin</Button>
                     </Link>
                     <Button style={{ textDecoration: "unset", margin: "5px" }} onClick={() => signOut()} variant="contained" color="error">SignOut</Button>
 
