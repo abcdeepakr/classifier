@@ -11,7 +11,7 @@ export default function App({ Component, pageProps }) {
   const router = useRouter()
   return (
     <AppContext.Provider value={{ auth: auth, authDispatch: authDispatch , filters: filters, filterDispatch: filterDispatch}} >
-      {router.pathname == "/auth" || router.pathname == "/confirm" ? null : <Navigation />}
+      {router.pathname == "/auth" || router.pathname == "/confirm" || auth.isAuthenticated == false ? null : <Navigation />}
       <Component {...pageProps} />
       
       
