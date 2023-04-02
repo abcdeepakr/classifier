@@ -10,7 +10,13 @@ function Dashboard() {
     
     const router = useRouter()
     useEffect(() => {
-        let animalData = [...JSON.parse(localStorage.getItem('animalData'))]
+
+        let animalData = localStorage.getItem('animalData')
+        if(animalData == null){
+            animalData = imagesJson.images
+        } else{
+            animalData = [...JSON.parse(localStorage.getItem('animalData'))]
+        }
         localStorage.setItem("animalData", JSON.stringify(animalData))
         const verifyToken = async () => {
             if (localStorage.getItem("session") == null) {

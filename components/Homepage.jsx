@@ -12,6 +12,11 @@ function Homepage() {
     const router = useRouter()
     const [authLoading, setAuthLoading] = useState(true)
     useEffect(() => {
+        if(localStorage.getItem("labels")==null || JSON.parse(localStorage.getItem("labels").length == 0 )){
+            console.log("Setging image")
+            // setLabels(["cat","dog","horse","meow","bark","neigh"])
+            localStorage.setItem("labels",JSON.stringify(["cat","dog","horse","meow","bark","neigh"]))
+        }
         const verifyToken = async () => {
             if (localStorage.getItem("session") == null) {
                 router.push('/auth')

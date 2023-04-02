@@ -97,7 +97,7 @@ export default function Auth() {
 
                 </CardContent>
             </Card>
-
+        <p className={styles.creds}>Test Credentials <br></br>Username: <b>admin@classifier.com</b> <br></br>Password: <b>adminpassword</b></p>  
         </>
     )
 }

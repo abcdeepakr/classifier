@@ -43,6 +43,9 @@ function RenderImages() {
     
     return (
         <>
+        {filteredIndexes.length == 0 ? 
+             <p style={{marginLeft:"20%"}}>No images found for selected filters, make sure you have assigned labels in the Dashboard tab</p> : null
+        }
             {imagesJson.images.map(imageObject => {
                 if (filteredIndexes.indexOf(imageObject.id) != -1) {
                     return (
