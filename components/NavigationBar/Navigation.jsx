@@ -24,14 +24,16 @@ function Navigation() {
                 localStorage.removeItem("session")
             })
             .catch(err => {
-                
+
                 console.log(err)
             })
     }
     return (
         <div>
 
-            <AppBar position="static">
+            <AppBar sx={{'&.MuiAppBar-colorPrimary':{
+                backgroundColor:"#132f4c"
+            }}} position="static">
                 <Toolbar>
                         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                     <Link style={{color:"unset", textDecoration: "unset", margin: "5px" }} href="/" >
@@ -39,10 +41,14 @@ function Navigation() {
                     </Link>
                         </Typography>
                     <Link style={{ textDecoration: "unset", margin: "5px" }} href="/dashboard" >
-                        <Button variant="contained" color="info">Dashboard</Button>
+                        <Button sx={{'&.MuiButton-root':{
+                            backgroundColor:"#66b2ff", color: "black", fontWeight:"500"
+                        }}}   variant="contained" color="info">Dashboard</Button>
                     </Link>
                     <Link style={{ textDecoration: "unset", margin: "5px" }} href="/admin" >
-                        <Button variant="contained" color="success">Admin Dashboard</Button>
+                        <Button sx={{'&.MuiButton-root':{
+                            backgroundColor:"#66b2ff", color: "black", fontWeight:"500"
+                        }}} variant="contained" color="success">Admin Dashboard</Button>
                     </Link>
                     <Button style={{ textDecoration: "unset", margin: "5px" }} onClick={() => signOut()} variant="contained" color="error">SignOut</Button>
 

@@ -7,7 +7,7 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import { Button } from '@mui/material';
-
+import Link from 'next/link';
 function RenderFilters() {
 
     const applicationContext = useContext(AppContext)
@@ -36,7 +36,7 @@ function RenderFilters() {
 
     return (
         <div>
-            <h4>Filters</h4>
+            <h4>{applicationContext.filters.uniqueFilters.length == 0 ? "No filters created" : "Filters"}</h4>
             {loading ? <Box
                 sx={{
                     bgcolor: '#121212',
@@ -55,13 +55,13 @@ function RenderFilters() {
             </Box> : applicationContext.filters.uniqueFilters.map(label => {
                 return (
 
-                    <FormGroup key={label}>
+                    <FormGroup key={label} >
                         <FormControlLabel control={<Checkbox sx={{
                             color: "white",
                             '&.Mui-checked': {
                                 color: "white",
                             },
-                        }} onClick={(e) => updateSelectedFilters(e)} id={label} color="success" />} label={label} />
+                        }}  onClick={(e) => updateSelectedFilters(e)} id={label} color="success" />}  label={label} />
                     </FormGroup>
 
                 )
