@@ -11,7 +11,6 @@ This is a sample project, the labels created by the admin will be stored in the 
 This caveat can be tackled by migrating to a Supabase postgreSQL DB.
 
 # tl;dr 
-<hr>
 View the Demo video [Here](https://www.veed.io/view/9958d14f-f9f6-4008-9ba7-d240fcd04822?panel=share)
 Test the live website [here](https://classifier-ebon.vercel.app/)
 
