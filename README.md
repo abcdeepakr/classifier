@@ -17,7 +17,7 @@ This caveat can be tackled by migrating to a Supabase postgreSQL DB.
 
 # <u>Getting started</u>
 
-Pre-requisite
+Pre-requisite for local testing
 - Supabase account for DB and Auth
 - Supabase DB Connection URL
 - Supabase Anon Key
