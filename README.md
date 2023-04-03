@@ -11,7 +11,9 @@ This is a sample project, the labels created by the admin will be stored in the 
 This caveat can be tackled by migrating to a Supabase postgreSQL DB.
 
 # tl;dr 
-- View the Demo video [Here](https://www.veed.io/view/9958d14f-f9f6-4008-9ba7-d240fcd04822?panel=share)
+## Demo Video
+
+https://user-images.githubusercontent.com/33338977/229420693-f2266c22-d776-4502-a48d-e6c5921d11d3.mp4
 
 - Test the live website [here](https://classifier-ebon.vercel.app/)
 
@@ -233,6 +235,8 @@ Since we are using a localstorage to store the labels, this project is for test 
 
 ## Demo
 
-- View the Demo video [Here](https://www.veed.io/view/9958d14f-f9f6-4008-9ba7-d240fcd04822?panel=share)
+
+https://user-images.githubusercontent.com/33338977/229420693-f2266c22-d776-4502-a48d-e6c5921d11d3.mp4
 
 - Test the live website [here](https://classifier-ebon.vercel.app/)
+
